@@ -5,6 +5,7 @@ import com.almo.noteApp.repository.NoteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,9 +48,14 @@ public class NoteService {
         return noteRepository.save(existingNote);
     }
 
-//    public Note getNoteByDescription(String noteDescription) {
-//        Note noteByDescription = noteRepository.findByDescription(noteDescription);
-//        return noteRepository.findByDescription(noteDescription);
-//
-//    }
+    public Note getNoteByDescription(String noteDescription) {
+        Note noteByDescription = noteRepository.findByNoteDescription(noteDescription);
+        return noteRepository.findByNoteDescription(noteDescription);
+
+    }
+
+    public Note getNoteByDate(LocalDateTime recDate) {
+        Note noteByDate = noteRepository.findByRecDate(recDate);
+        return noteRepository.findByRecDate(recDate);
+    }
 }

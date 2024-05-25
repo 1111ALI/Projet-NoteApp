@@ -4,11 +4,13 @@ import com.almo.noteApp.entity.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Repository
 public interface NoteRepository extends JpaRepository<Note, UUID> {
- //   Note findByDescription(String noteDescription);
-//    Note findByDate(LocalDateTime recDate);
+    Note findByNoteDescription(String noteDescription);
+
+    Note findByRecDate(LocalDateTime recDate);
 
 }

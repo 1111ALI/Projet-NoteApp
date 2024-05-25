@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,16 +40,23 @@ public class NoteController {
         return noteService.getNoteById(noteId);
 
     }
+
     // Chercher une Note par sa Description
-//    @GetMapping("{noteDescription}")
-//    public Note getNoteByDescription(@PathVariable ("noteDescription") String noteDescription){
-//        return noteService.getNoteByDescription(noteDescription);
-//
-//    }
+    @GetMapping("{noteDescription}")
+    public Note getNoteByDescription(@PathVariable("noteDescription") String noteDescription) {
+        return noteService.getNoteByDescription(noteDescription);
+    }
+
+    // Chercher une Note par la Date
+    @GetMapping("{recDate}")
+    public Note getNoteByDate(@PathVariable("recDate") LocalDateTime recDate) {
+        return noteService.getNoteByDate(recDate);
+
+    }
 
     // Mettre à jour une note
     @PutMapping("{id}")
-    public Note updateNoteById (@PathVariable("id") UUID noteId, @RequestBody Note note){
+    public Note updateNoteById(@PathVariable("id") UUID noteId, @RequestBody Note note) {
         return noteService.updateNoteById(noteId, note);
 
     }
