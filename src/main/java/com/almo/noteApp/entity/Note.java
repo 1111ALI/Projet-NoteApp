@@ -22,10 +22,10 @@ public class Note {
     @Id
     @GeneratedValue
 
-    public UUID noteId;
-    public String noteDescription;
-    public String noteBody;
-    public LocalDateTime recDate;
-    public String noteReminder;
+    private UUID noteId;
+    private String noteDescription;
+    private String noteBody;
+    private LocalDateTime recDate;
+    private String noteReminder;
 
 }

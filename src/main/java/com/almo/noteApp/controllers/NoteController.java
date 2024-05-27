@@ -42,13 +42,13 @@ public class NoteController {
     }
 
     // Chercher une Note par sa Description
-    @GetMapping("{noteDescription}")
+    @GetMapping("{noteDescription}/Exe_1")
     public Note getNoteByDescription(@PathVariable("noteDescription") String noteDescription) {
         return noteService.getNoteByDescription(noteDescription);
     }
 
     // Chercher une Note par la Date
-    @GetMapping("{recDate}")
+    @GetMapping("{recDate}/Exe_2")
     public Note getNoteByDate(@PathVariable("recDate") LocalDateTime recDate) {
         return noteService.getNoteByDate(recDate);
 
