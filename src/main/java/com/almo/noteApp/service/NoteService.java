@@ -21,6 +21,7 @@ public class NoteService {
     }
 
     public Note createNote(Note note) {
+
         return noteRepository.save(note);
     }
 
