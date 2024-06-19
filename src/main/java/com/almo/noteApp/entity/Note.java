@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -25,7 +26,7 @@ public class Note {
     private UUID noteId;
     private String noteDescription;
     private String noteBody;
-    private LocalDateTime recDate;
+    private LocalDate recDate;
     private String noteReminder;
 
 }

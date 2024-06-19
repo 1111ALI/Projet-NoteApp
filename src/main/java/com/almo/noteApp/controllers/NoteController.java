@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -49,7 +50,7 @@ public class NoteController {
 
     // Chercher une Note par la Date
     @GetMapping("{recDate}/Exe_2")
-    public Note getNoteByDate(@PathVariable("recDate") LocalDateTime recDate) {
+    public Note getNoteByDate(@PathVariable("recDate") LocalDate recDate) {
         return noteService.getNoteByDate(recDate);
 
     }

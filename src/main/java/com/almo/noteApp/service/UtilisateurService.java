@@ -5,8 +5,7 @@ import com.almo.noteApp.repository.UtilisateurRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -36,19 +35,21 @@ public class UtilisateurService {
         return utilisateurToget;
     }
 
-    public Utilisateur updateUtilisateurById(UUID utilisateurId, Utilisateur utilisateur) {
-        Utilisateur existingUtilisateur = utilisateurRepository.findById(utilisateurId)
-
-                .orElseThrow(() -> new RuntimeException("Cet utilisateur n'existe pas dans la BD"));
-
-        //       if(!studentRepository.existsById(existingStudent.getStudentId())){
-//if ( utilisateurRepository.existsById(existingUtilisateur.getUtilisateurId())){
-//            throw new RuntimeException("Utilisateur inexistant dnas la BD");
-//        }
-
-        existingUtilisateur.setNomUtilisateur(utilisateur.getNomUtilisateur());
-        existingUtilisateur.setEmailUtilisateur(utilisateur.getEmailUtilisateur());
-        existingUtilisateur.setMotDePasseUtilisateur(utilisateur.getMotDePasseUtilisateur());
-        return utilisateurRepository.save(existingUtilisateur);
+    public Map<String, String> updateUtilisateurById(UUID utilisateurId, Utilisateur utilisateur) {
+        Map<String, String> reponse = new HashMap<>();
+        Optional<Utilisateur> existingUtilisateur = utilisateurRepository.findById(utilisateurId);
+        if (!existingUtilisateur.isPresent()) {
+            reponse.put("status", "failed");
+            reponse.put("message", " l'utilisateur de Id " + utilisateurId + " nexiste pas ");
+        } else {
+            Utilisateur user = existingUtilisateur.get();
+            user.setNomUtilisateur(utilisateur.getNomUtilisateur());
+            user.setEmailUtilisateur(utilisateur.getEmailUtilisateur());
+            user.setMotDePasseUtilisateur(utilisateur.getMotDePasseUtilisateur());
+            utilisateurRepository.save(user);
+            reponse.put("status", "succes");
+            reponse.put("message", " l'utilisateur de Id " + utilisateurId + " a été mis à jour ");
+        }
+        return reponse;
     }
 }
